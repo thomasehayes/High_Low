@@ -1,8 +1,12 @@
 <?php 
-$random = rand(1, 100);
+$min = 1;
+$max = 100;
+$random = rand($min, $max);
 
 if ($argc >= 3 && is_numeric($argv[1]) && is_numeric($argv[2])){
-	$random = rand($argv[1], $argv[2]);
+	$min = $argv[1];
+	$max = $argv[2];
+	$random = rand($min, $max);
 } else if ($argc >= 3 && (!is_numeric($argv[1]) || !is_numeric($argv[2]))) {
 	fwrite(STDOUT, "Add min values" . PHP_EOL);
 	$min = trim(fgets(STDIN));
