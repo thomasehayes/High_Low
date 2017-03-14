@@ -3,7 +3,13 @@ $random = rand(1, 100);
 
 if ($argc >= 3 && is_numeric($argv[1]) && is_numeric($argv[2])){
 	$random = rand($argv[1], $argv[2]);
-} 
+} else if ($argc >= 3 && (!is_numeric($argv[1]) || !is_numeric($argv[2]))) {
+	fwrite(STDOUT, "Add min values" . PHP_EOL);
+	$min = trim(fgets(STDIN));
+	fwrite(STDOUT, "Add max values" . PHP_EOL);
+	$max = trim(fgets(STDIN));
+	$random = rand($min, $max);
+}
 
 fwrite(STDOUT, "Guess a number" . PHP_EOL);
 $playerGuess = trim(fgets(STDIN));
